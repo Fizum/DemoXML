@@ -27,12 +27,12 @@ namespace DemoXML
             InitializeComponent();
         }
 
-        bool flag = false;
+        CancellationTokenSource ct;
 
         private void Btn_Aggiorna_Click(object sender, RoutedEventArgs e)
         {
             Lst_Lista.Items.Clear();
-            flag = true;
+            ct = new CancellationTokenSource();
             Task.Factory.StartNew(() => CaricaDati());
         }
 
@@ -55,14 +55,14 @@ namespace DemoXML
                 serie = s;
                 Dispatcher.Invoke(() => Lst_Lista.Items.Add(serie));
                 Thread.Sleep(500);
-                if (!flag)
+                if (ct.IsCancellationRequested)
                     break;
             }
         }
 
         private void Btn_Stop_Click(object sender, RoutedEventArgs e)
         {
-            flag = false;
+            ct.Cancel();
         }
     }
 }
