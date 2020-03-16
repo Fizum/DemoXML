@@ -38,7 +38,6 @@ namespace DemoXML
 
         private void CaricaDati()
         {
-            Serie serie = new Serie();
             string path = @"presenze.xml";
             XDocument xmlDoc = XDocument.Load(path);
             XElement xmlNetflix = xmlDoc.Element("netflix");
@@ -52,8 +51,7 @@ namespace DemoXML
                 s.Nome = xmlNome.Value;
                 s.Stagioni = Convert.ToInt32(xmlStagioni.Value);
                 s.Episodi = Convert.ToInt32(xmlEpisodi.Value);
-                serie = s;
-                Dispatcher.Invoke(() => Lst_Lista.Items.Add(serie));
+                Dispatcher.Invoke(() => Lst_Lista.Items.Add(s));
                 Thread.Sleep(50);
             }
         }
