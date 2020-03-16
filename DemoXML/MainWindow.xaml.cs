@@ -80,8 +80,6 @@ namespace DemoXML
                 foreach (var item in xmlSerie)
                 {
                     XElement xmlNome = item.Element("nome");
-                    XElement xmlStagioni = item.Element("stagioni");
-                    XElement xmlEpisodi = item.Element("episodi");
                     s.Nome = xmlNome.Value;
                     Dispatcher.Invoke(() => Txt_Estrai.Text = s.Nome);
                     Thread.Sleep(50);
