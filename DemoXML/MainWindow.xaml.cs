@@ -25,6 +25,7 @@ namespace DemoXML
         public MainWindow()
         {
             InitializeComponent();
+            Txt_Estrai.IsReadOnly = true;
         }
 
         CancellationTokenSource ct;
@@ -32,7 +33,6 @@ namespace DemoXML
         private void Btn_Aggiorna_Click(object sender, RoutedEventArgs e)
         {
             Lst_Lista.Items.Clear();
-            ct = new CancellationTokenSource();
             Task.Factory.StartNew(() => CaricaDati());
         }
 
@@ -54,15 +54,43 @@ namespace DemoXML
                 s.Episodi = Convert.ToInt32(xmlEpisodi.Value);
                 serie = s;
                 Dispatcher.Invoke(() => Lst_Lista.Items.Add(serie));
-                Thread.Sleep(500);
-                if (ct.IsCancellationRequested)
-                    break;
+                Thread.Sleep(50);
             }
         }
 
         private void Btn_Stop_Click(object sender, RoutedEventArgs e)
         {
             ct.Cancel();
+        }
+
+        private void Btn_Estrai_Click(object sender, RoutedEventArgs e)
+        {
+            ct = new CancellationTokenSource();
+            Task.Factory.StartNew(()=> Estrai());
+        }
+
+        private void Estrai()
+        {
+            string path = @"presenze.xml";
+            XDocument xmlDoc = XDocument.Load(path);
+            XElement xmlNetflix = xmlDoc.Element("netflix");
+            var xmlSerie = xmlNetflix.Elements("serie");
+            Serie s = new Serie();
+
+            while (!ct.IsCancellationRequested)
+            {
+                foreach (var item in xmlSerie)
+                {
+                    XElement xmlNome = item.Element("nome");
+                    XElement xmlStagioni = item.Element("stagioni");
+                    XElement xmlEpisodi = item.Element("episodi");
+                    s.Nome = xmlNome.Value;
+                    Dispatcher.Invoke(() => Txt_Estrai.Text = s.Nome);
+                    Thread.Sleep(50);
+                    if (ct.IsCancellationRequested)
+                        break;
+                } 
+            }
         }
     }
 }
