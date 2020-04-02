@@ -5,14 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoXML"
         mc:Ignorable="d"
-        Title="MainWindow" Height="457.4" Width="460.4">
+        Title="MainWindow" Height="457.4" Width="465.2">
     <Grid Background="#FF00B7E4">
         <Button x:Name="Btn_Aggiorna" Content="Visualizza Lista" HorizontalAlignment="Left" Height="28" Margin="275,10,0,0" VerticalAlignment="Top" Width="158" Click="Btn_Aggiorna_Click" FontSize="16" FontFamily="Sitka Subheading"/>
-        <ListBox x:Name="Lst_Lista" HorizontalAlignment="Left" Height="333" VerticalAlignment="Top" Width="423" Margin="10,45,0,0" FontSize="16" FontFamily="Sitka Subheading"/>
+        <ListBox x:Name="Lst_Lista" HorizontalAlignment="Left" Height="333" VerticalAlignment="Top" Width="222" Margin="10,45,0,0" FontSize="16" FontFamily="Sitka Subheading"/>
         <Label Content="Cosa guardare stasera" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="260" FontSize="20" FontFamily="Stencil" Background="{x:Null}" Foreground="Red"/>
-        <Button x:Name="Btn_Stop" Content="Stop" HorizontalAlignment="Left" Height="28" Margin="333,383,0,0" VerticalAlignment="Top" Width="100" FontFamily="Sitka Subheading" FontSize="16" Click="Btn_Stop_Click"/>
-        <Button x:Name="Btn_Estrai" Content="Estrai" HorizontalAlignment="Left" Height="28" Margin="10,383,0,0" VerticalAlignment="Top" Width="100" Click="Btn_Estrai_Click" FontFamily="Sitka Subheading" FontSize="16"/>
-        <TextBox x:Name="Txt_Estrai" HorizontalAlignment="Left" Height="28" Margin="115,383,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" FontFamily="Sitka Subheading" FontSize="16"/>
+        <Button x:Name="Btn_Stop" Content="Stop" HorizontalAlignment="Left" Height="28" Margin="350,45,0,0" VerticalAlignment="Top" Width="100" FontFamily="Sitka Subheading" FontSize="16" Click="Btn_Stop_Click"/>
+        <Button x:Name="Btn_Estrai" Content="Estrai" HorizontalAlignment="Left" Height="28" Margin="237,45,0,0" VerticalAlignment="Top" Width="100" Click="Btn_Estrai_Click" FontFamily="Sitka Subheading" FontSize="16"/>
+        <TextBox x:Name="Txt_Estrai" HorizontalAlignment="Left" Height="28" Margin="237,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" FontFamily="Sitka Subheading" FontSize="16"/>
+        <TextBox x:Name="Txt_DatiSerie" HorizontalAlignment="Left" Height="28" Margin="237,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
 
     </Grid>
 </Window>

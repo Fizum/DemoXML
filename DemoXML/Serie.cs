@@ -14,7 +14,7 @@ namespace DemoXML
 
         public override string ToString()
         {
-            return $"{Nome}, stagioni {Stagioni}, episodi totali {Episodi}";
+            return Nome;
         }
     }
 }

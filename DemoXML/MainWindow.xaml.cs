@@ -59,6 +59,13 @@ namespace DemoXML
         private void Btn_Stop_Click(object sender, RoutedEventArgs e)
         {
             ct.Cancel();
+            foreach (Serie item in Lst_Lista.Items)
+            {
+                if (item.Nome == Txt_Estrai.Text)
+                {
+                    Dispatcher.Invoke(() => Txt_DatiSerie.Text = item.Stagioni.ToString() + " stagioni, " + item.Episodi.ToString() + " episodi totali");
+                }
+            }
         }
 
         private void Btn_Estrai_Click(object sender, RoutedEventArgs e)
