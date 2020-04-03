@@ -5,15 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DemoXML"
         mc:Ignorable="d"
-        Title="MainWindow" Height="457.4" Width="465.2">
+        Title="MainWindow" Height="457.4" Width="501.2">
     <Grid Background="#FF00B7E4">
-        <Button x:Name="Btn_Aggiorna" Content="Visualizza Lista" HorizontalAlignment="Left" Height="28" Margin="275,10,0,0" VerticalAlignment="Top" Width="158" Click="Btn_Aggiorna_Click" FontSize="16" FontFamily="Sitka Subheading"/>
-        <ListBox x:Name="Lst_Lista" HorizontalAlignment="Left" Height="333" VerticalAlignment="Top" Width="222" Margin="10,45,0,0" FontSize="16" FontFamily="Sitka Subheading"/>
+        <Button x:Name="Btn_Aggiorna" Content="Visualizza Lista" HorizontalAlignment="Left" Height="28" Margin="275,10,0,0" VerticalAlignment="Top" Width="209" Click="Btn_Aggiorna_Click" FontSize="16" FontFamily="Sitka Subheading"/>
+        <ListBox x:Name="Lst_Lista" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" Width="222" Margin="10,45,0,0" FontSize="16" FontFamily="Sitka Subheading"/>
         <Label Content="Cosa guardare stasera" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="260" FontSize="20" FontFamily="Stencil" Background="{x:Null}" Foreground="Red"/>
-        <Button x:Name="Btn_Stop" Content="Stop" HorizontalAlignment="Left" Height="28" Margin="350,45,0,0" VerticalAlignment="Top" Width="100" FontFamily="Sitka Subheading" FontSize="16" Click="Btn_Stop_Click"/>
-        <Button x:Name="Btn_Estrai" Content="Estrai" HorizontalAlignment="Left" Height="28" Margin="237,45,0,0" VerticalAlignment="Top" Width="100" Click="Btn_Estrai_Click" FontFamily="Sitka Subheading" FontSize="16"/>
-        <TextBox x:Name="Txt_Estrai" HorizontalAlignment="Left" Height="28" Margin="237,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" FontFamily="Sitka Subheading" FontSize="16"/>
-        <TextBox x:Name="Txt_DatiSerie" HorizontalAlignment="Left" Height="28" Margin="237,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+        <Button x:Name="Btn_Stop" Content="Stop" HorizontalAlignment="Left" Height="28" Margin="364,45,0,0" VerticalAlignment="Top" Width="120" FontFamily="Sitka Subheading" FontSize="16" Click="Btn_Stop_Click"/>
+        <Button x:Name="Btn_Estrai" Content="Estrai" HorizontalAlignment="Left" Height="28" Margin="237,45,0,0" VerticalAlignment="Top" Width="120" Click="Btn_Estrai_Click" FontFamily="Sitka Subheading" FontSize="16"/>
+        <TextBox x:Name="Txt_Estrai" HorizontalAlignment="Left" Height="28" Margin="237,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontFamily="Sitka Subheading" FontSize="16"/>
+        <TextBox x:Name="Txt_DatiSerie" HorizontalAlignment="Left" Height="28" Margin="237,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="247" FontFamily="Sitka Subheading" FontSize="16"/>
+        <Rectangle x:Name="Rtg_Mod" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="217" Margin="238,188,0,0" Stroke="Black" VerticalAlignment="Top" Width="246"/>
+        <TextBox x:Name="Txt_StagioniMod" HorizontalAlignment="Left" Height="28" Margin="342,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontFamily="Sitka Subheading" FontSize="16"/>
+        <TextBox x:Name="Txt_NomeMod" HorizontalAlignment="Left" Height="28" Margin="253,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" FontFamily="Sitka Subheading" FontSize="16"/>
+        <TextBox x:Name="Txt_EpisodiMod" HorizontalAlignment="Left" Height="28" Margin="342,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129" FontFamily="Sitka Subheading" FontSize="16" RenderTransformOrigin="0.416,0.643"/>
+        <Label x:Name="Lbl_TitoloMod" Content="Modifica dati serie" HorizontalAlignment="Left" Height="28" Margin="253,202,0,0" VerticalAlignment="Top" Width="218" FontFamily="Sitka Subheading" FontSize="16"/>
+        <Button x:Name="Btn_Modifica" Content="Modifica" HorizontalAlignment="Left" Height="28" Margin="237,155,0,0" VerticalAlignment="Top" Width="246" FontFamily="Sitka Subheading" FontSize="16" Click="Btn_Modifica_Click"/>
+        <Label x:Name="Lbl_EpisodiMod" Content="Episodi" HorizontalAlignment="Left" Height="28" Margin="253,326,0,0" VerticalAlignment="Top" Width="89" FontFamily="Sitka Subheading" FontSize="16"/>
+        <Label x:Name="Lbl_StagioniMod" Content="Stagioni" HorizontalAlignment="Left" Height="28" Margin="253,285,0,0" VerticalAlignment="Top" Width="89" FontFamily="Sitka Subheading" FontSize="16"/>
+        <Button x:Name="Btn_Salva" Content="Salva" HorizontalAlignment="Left" Height="28" Margin="253,368,0,0" VerticalAlignment="Top" Width="218" FontFamily="Sitka Subheading" FontSize="16" Click="Btn_Salva_Click"/>
 
     </Grid>
 </Window>

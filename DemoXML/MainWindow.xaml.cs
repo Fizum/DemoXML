@@ -26,6 +26,16 @@ namespace DemoXML
         {
             InitializeComponent();
             Txt_Estrai.IsReadOnly = true;
+            Txt_DatiSerie.IsReadOnly = true;
+            Rtg_Mod.Visibility = Visibility.Hidden;
+            Btn_Salva.Visibility = Visibility.Hidden;
+            Lbl_TitoloMod.Visibility = Visibility.Hidden;
+            Lbl_StagioniMod.Visibility = Visibility.Hidden;
+            Lbl_EpisodiMod.Visibility = Visibility.Hidden;
+            Txt_NomeMod.Visibility = Visibility.Hidden;
+            Txt_StagioniMod.Visibility = Visibility.Hidden;
+            Txt_EpisodiMod.Visibility = Visibility.Hidden;
+
         }
 
         CancellationTokenSource ct;
@@ -62,9 +72,7 @@ namespace DemoXML
             foreach (Serie item in Lst_Lista.Items)
             {
                 if (item.Nome == Txt_Estrai.Text)
-                {
                     Dispatcher.Invoke(() => Txt_DatiSerie.Text = item.Stagioni.ToString() + " stagioni, " + item.Episodi.ToString() + " episodi totali");
-                }
             }
         }
 
@@ -94,6 +102,93 @@ namespace DemoXML
                         break;
                 } 
             }
+        }
+
+        private void Btn_Modifica_Click(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.Invoke(() => ContollaSelezione());
+        }
+
+        private void ContollaSelezione()
+        {
+            if (Convert.ToString(Lst_Lista.SelectedItem) == "")
+            {
+                Rtg_Mod.Visibility = Visibility.Hidden;
+                Btn_Salva.Visibility = Visibility.Hidden;
+                Lbl_TitoloMod.Visibility = Visibility.Hidden;
+                Lbl_StagioniMod.Visibility = Visibility.Hidden;
+                Lbl_EpisodiMod.Visibility = Visibility.Hidden;
+                Txt_NomeMod.Visibility = Visibility.Hidden;
+                Txt_StagioniMod.Visibility = Visibility.Hidden;
+                Txt_EpisodiMod.Visibility = Visibility.Hidden;
+                MessageBox.Show("Seleziona un elemento");
+            }
+            else
+            {
+                Rtg_Mod.Visibility = Visibility.Visible;
+                Btn_Salva.Visibility = Visibility.Visible;
+                Lbl_TitoloMod.Visibility = Visibility.Visible;
+                Lbl_StagioniMod.Visibility = Visibility.Visible;
+                Lbl_EpisodiMod.Visibility = Visibility.Visible;
+                Txt_NomeMod.Visibility = Visibility.Visible;
+                Txt_StagioniMod.Visibility = Visibility.Visible;
+                Txt_EpisodiMod.Visibility = Visibility.Visible;
+
+                count = 0;
+
+                string path = @"presenze.xml";
+                XDocument xmlDoc = XDocument.Load(path);
+                XElement xmlNetflix = xmlDoc.Element("netflix");
+                var xmlSerie = xmlNetflix.Elements("serie");
+                foreach (var item in xmlSerie)
+                {
+                    XElement xmlNome = item.Element("nome");
+                    XElement xmlStagioni = item.Element("stagioni");
+                    XElement xmlEpisodi = item.Element("episodi");
+                    Serie s = new Serie();
+                    s.Nome = xmlNome.Value;
+                    s.Stagioni = Convert.ToInt32(xmlStagioni.Value);
+                    s.Episodi = Convert.ToInt32(xmlEpisodi.Value);
+
+                    if (Convert.ToString(Lst_Lista.SelectedItem) == s.Nome)
+                    {
+                        Txt_NomeMod.Text = s.Nome;
+                        Txt_StagioniMod.Text = s.Stagioni.ToString();
+                        Txt_EpisodiMod.Text = s.Episodi.ToString();
+                        break;
+                    }
+                    count++;
+                }
+            }
+        }
+
+        int count = 0;
+
+        private void Btn_Salva_Click(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.Invoke(() => SalvaModifiche());
+        }
+
+
+        private void SalvaModifiche()
+        {
+            int count2 = 0;
+            string path = @"presenze.xml";
+            XDocument xmlDoc = XDocument.Load(path);
+            XElement xmlNetflix = xmlDoc.Element("netflix");
+            var xmlSerie = xmlNetflix.Elements("serie");
+            foreach (var item in xmlSerie)
+            {
+                if (count2 == count)
+                {
+                    item.SetElementValue("nome", Txt_NomeMod.Text);
+                    item.SetElementValue("stagioni", Txt_StagioniMod.Text);
+                    item.SetElementValue("episodi", Txt_EpisodiMod.Text);
+                    break;
+                }
+                count2++;
+            }
+            xmlDoc.Save("presenze.xml");
         }
     }
 }
